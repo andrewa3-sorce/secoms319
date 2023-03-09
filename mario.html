@@ -8,64 +8,10 @@
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <title>Mario Section</title>
+    <title>Mario Games</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
-    <style>
-        .bd-placeholder-img {
-          font-size: 1.125rem;
-          text-anchor: middle;
-          -webkit-user-select: none;
-          -moz-user-select: none;
-          user-select: none;
-        }
-  
-        @media (min-width: 768px) {
-          .bd-placeholder-img-lg {
-            font-size: 3.5rem;
-          }
-        }
-  
-        .b-example-divider {
-          height: 3rem;
-          background-color: rgba(0, 0, 0, .1);
-          border: solid rgba(0, 0, 0, .15);
-          border-width: 1px 0;
-          box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-        }
-  
-        .b-example-vr {
-          flex-shrink: 0;
-          width: 1.5rem;
-          height: 100vh;
-        }
-  
-        .bi {
-          vertical-align: -.125em;
-          fill: currentColor;
-        }
-  
-        .nav-scroller {
-          position: relative;
-          z-index: 2;
-          height: 2.75rem;
-          overflow-y: hidden;
-        }
-  
-        .nav-scroller .nav {
-          display: flex;
-          flex-wrap: nowrap;
-          padding-bottom: 1rem;
-          margin-top: -1px;
-          overflow-x: auto;
-          text-align: center;
-          white-space: nowrap;
-          -webkit-overflow-scrolling: touch;
-        }
-        .card-text {
-            color: white;
-        }
-      </style>
+    <link rel="stylesheet" href="./styles/styles.css">
 </head>
 
 <body>
@@ -76,18 +22,16 @@
                     <div class="col-sm-8 col-md-7 py-4">
                         <h4 class="text-white">About</h4>
                         <p class="text-white">
-                            Author: Andrew Ahrenkiel <br>
-                            ISU Netid : andrewa3@iastate.edu <br>
-                            Date : Febuary 3rd, 2023
+                            Author: Jack Kelley <br>
+                            ISU Netid : jkelley1@iastate.edu <br>
+                            Date : Febuary 15th, 2023
                         </p>
                     </div>
                     <div class="col-sm-4 offset-md-1 py-4">
                         <h4 class="text-white">Contact</h4>
                         <ul class="list-unstyled">
                             <li><a href="#" class="text-white">Follow on Twitter</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Flower" target="_blank" class="text-white">Like
-                                    to Wiki</a></li>
-                            <li><a href="mailto:andrewa3@iastate.edu" class="text-white">Email me</a></li>
+                            <li><a href="mailto:jkelley1@iastate.edu" class="text-white">Email me</a></li>
                         </ul>
                     </div>
                 </div>
@@ -102,7 +46,7 @@
                         <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
                         <circle cx="12" cy="13" r="4" />
                     </svg>
-                    <strong>Album</strong>
+                    <strong>Games</strong>
                 </a>
                 <a href="#" class="navbar-brand d-flex align-items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
@@ -153,119 +97,12 @@
 
         <div class="album py-5 bg-dark">
             <div class="container bg-dark">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-sm-3 g-3 bg-dark" id="cardList">
 
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-sm-3 g-3 bg-dark">
-                    <div class="col bg-dark">
-                        <div class="card shadow-sm bg-dark">
-                            <img src="./mario/mario-64.jpg" alt="sm64">
-                            <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
-                            <div class="card-body">
-                                <p class="card-text"><strong>Super Mario 64 </strong>is one of, if not the most popular mario game that
-                                ever came out of nintendo studios. With the largest speedrunning scene out of any game ever created, this 27 year old
-                            game is still prospering today!</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a href="https://www.mariowiki.com/Super_Mario_64" class="btn btn-sm btn-outline-secondary" target="_blank">Wiki</a>
-                                        <a href="https://www.pricecharting.com/game/nintendo-64/super-mario-64" class="btn btn-sm btn-outline-secondary" target="_blank">Buy</a>
-                                    </div>
-                                    <small class="text-muted">1996</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col bg-dark">
-                        <div class="card shadow-sm bg-dark">
-                            <img src="./mario/supermariobros.jpg" alt="super mario bros">
-                            <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
-                            <div class="card-body">
-                                <p class="card-text"><strong>Super Mario Bros</strong> , released in 1985, was the first mario game that picked up some pace
-                                from nintendo. Released on the popular NES (Nintendo Entertainment System) Super Mario Bros holds a special place in many
-                            peoples hearts.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
-                                        <a href="https://en.wikipedia.org/wiki/Super_Mario_Bros." class="btn btn-sm btn-outline-secondary" target="_blank">Wiki</a>
-                                        <a href="https://www.pricecharting.com/game/nes/super-mario-bros" class="btn btn-sm btn-outline-secondary" target="_blank">Buy</a>
-                                    </div>
-                                    <small class="text-muted">1985</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col bg-dark">
-                        <div class="card shadow-sm bg-dark">
-                            <img src="./mario/newsupermariobros.jpg" alt="new super mario bros wii">
-                            <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
-                            <div class="card-body">
-                                <p class="card-text"><strong>New Super Mario Bros Wii</strong> was one of the first mario games I got to play as a kid. The way the wii console revolusionized
-                                the gaming industry is, and always will be, unmatched to any other console.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a href="https://www.mariowiki.com/New_Super_Mario_Bros._Wii" class="btn btn-sm btn-outline-secondary" target="_blank">Wiki</a>
-                                        <a href="https://www.pricecharting.com/game/wii/new-super-mario-bros-wii" class="btn btn-sm btn-outline-secondary" target="_blank">Buy</a>
-                                    </div>
-                                    <small class="text-muted">2009</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col bg-dark">
-                        <div class="card shadow-sm bg-dark">
-                            <img src="./mario/mario-kart-wii.jpg" alt="mario kart wii">
-                            <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
-                            <div class="card-body">
-                                <p class="card-text"><strong>Mario Kart Wii </strong> is regarded as one of the best mario kart games to be made.
-                                With a unique checkpoint system, players were able to take this game to the extremes; making a whole new catagory of ultra
-                            short-cuts.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a href="https://www.mariowiki.com/Mario_Kart_Wii" class="btn btn-sm btn-outline-secondary" target="_blank">Wiki</a>
-                                        <a href="https://www.pricecharting.com/game/wii/mario-kart-wii" class="btn btn-sm btn-outline-secondary" target="_blank">Buy</a>
-                                    </div>
-                                    <small class="text-muted">2008</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card shadow-sm bg-dark">
-                            <img src="./mario/mk8d.jpg" alt="mario kart 8 deluxe">
-                            <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
-                            <div class="card-body">
-                                <p class="card-text"><strong>Mario Kart 8 Deluxe </strong>is the most current mario kart game. In my opinion it doesnt quite live
-                                up to Mario Kart Wii, this is still a great game that is accessible to many. The Nintendo Switch console brings multiplayer functionality
-                            to it's peak, making this a great option for having fun with friends.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a href="https://www.mariowiki.com/Mario_Kart_8_Deluxe" class="btn btn-sm btn-outline-secondary" target="_blank">Wiki</a>
-                                        <a href="https://www.pricecharting.com/game/nintendo-switch/mario-kart-8-deluxe" class="btn btn-sm btn-outline-secondary" target="_blank">Buy</a>
-                                    </div>
-                                    <small class="text-muted">2017</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card shadow-sm bg-dark">
-                            <img src="./mario/super-mario-galaxy.jpg" alt="rose">
-                            <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
-                            <div class="card-body">
-                                <p class="card-text"><strong>Super Mario Galaxy</strong> was very unique and one of the real successful 3d mario games. The game
-                                utilized the new motion controls of Wii and was very popular, promoting a second release later on the Wii U.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a href="https://en.wikipedia.org/wiki/Super_Mario_Galaxy" class="btn btn-sm btn-outline-secondary" target="_blank">Wiki</a>
-                                        <a href="https://www.pricecharting.com/game/nintendo-switch/mario-kart-8-deluxe" class="btn btn-sm btn-outline-secondary" target="_blank">Buy</a>
-                                    </div>
-                                    <small class="text-muted">9 mins</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
     </main>
+    <script src="mario.js"></script>
 </body>
 
 </html>

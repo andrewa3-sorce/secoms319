@@ -11,61 +11,7 @@
     <title>Trading Card Games</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
-    <style>
-        .bd-placeholder-img {
-          font-size: 1.125rem;
-          text-anchor: middle;
-          -webkit-user-select: none;
-          -moz-user-select: none;
-          user-select: none;
-        }
-  
-        @media (min-width: 768px) {
-          .bd-placeholder-img-lg {
-            font-size: 3.5rem;
-          }
-        }
-  
-        .b-example-divider {
-          height: 3rem;
-          background-color: rgba(0, 0, 0, .1);
-          border: solid rgba(0, 0, 0, .15);
-          border-width: 1px 0;
-          box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-        }
-  
-        .b-example-vr {
-          flex-shrink: 0;
-          width: 1.5rem;
-          height: 100vh;
-        }
-  
-        .bi {
-          vertical-align: -.125em;
-          fill: currentColor;
-        }
-  
-        .nav-scroller {
-          position: relative;
-          z-index: 2;
-          height: 2.75rem;
-          overflow-y: hidden;
-        }
-  
-        .nav-scroller .nav {
-          display: flex;
-          flex-wrap: nowrap;
-          padding-bottom: 1rem;
-          margin-top: -1px;
-          overflow-x: auto;
-          text-align: center;
-          white-space: nowrap;
-          -webkit-overflow-scrolling: touch;
-        }
-        .card-text {
-            color: white;
-        }
-      </style>
+    <link rel="stylesheet" href="./styles/styles.css">
 </head>
 
 <body>
@@ -100,9 +46,9 @@
                         <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
                         <circle cx="12" cy="13" r="4" />
                     </svg>
-                    <strong>Album</strong>
+                    <strong>Games</strong>
                 </a>
-                <a href="#" class="navbar-brand d-flex align-items-center">
+                <a href="mario.html" class="navbar-brand d-flex align-items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
                         stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2"
                         viewBox="0 0 24 24">
@@ -111,7 +57,7 @@
                     </svg>
                     <strong>Mario</strong>
                 </a>
-                <a href="tcgs.html" class="navbar-brand d-flex align-items-center">
+                <a href="#" class="navbar-brand d-flex align-items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
                         stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2"
                         viewBox="0 0 24 24">
@@ -157,74 +103,7 @@
             </div>
     </main>
 
-    <script type="text/javascript">
-        fetch('tcgs.json')
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (data) {
-                appendData(data);
-            })
-            .catch(function (err) {
-                console.log('error:' + err);
-            })
-
-        function appendData(data) {
-            let mainContainer = document.getElementById("cardList");
-            for (let gameName in data) {
-                let game = data[gameName];
-
-                let divOuter = document.createElement("div");
-                divOuter.classList.add("col", "bg-dark");
-
-                let div = document.createElement("div");
-                div.classList.add("card", "shadow-sm", "bg-dark");
-
-                let img = document.createElement("img");
-                img.src = "./images/" + game["imageName"];
-                div.appendChild(img);
-
-                let innerDiv = document.createElement("div");
-                innerDiv.classList.add("card-body");
-
-                let p = document.createElement("p");
-                p.innerHTML = `${game["description"]}`;
-                p.classList.add("card-text");
-
-                let btnContainer = document.createElement("div");
-                btnContainer.classList.add("d-flex", "justify-content-between", "align-items-center");
-
-                let btns = document.createElement("div");
-                btns.classList.add("btn-group");
-
-                let siteBtn = document.createElement("a");
-                siteBtn.href = game["websiteLink"];
-                siteBtn.target = "_blank";
-                siteBtn.classList.add("btn", "btn-sm", "btn-outline-secondary");
-                siteBtn.innerHTML = "Site";
-
-                let buyBtn = document.createElement("a");
-                buyBtn.href = game["buyLink"];
-                buyBtn.target = "_blank";
-                buyBtn.classList.add("btn", "btn-sm", "btn-outline-secondary");
-                buyBtn.innerHTML = "Buy";
-
-                let year = document.createElement("small");
-                year.classList.add("card-text");
-                year.innerHTML = game["year"];
-
-                btns.appendChild(siteBtn);
-                btns.appendChild(buyBtn);
-                btnContainer.appendChild(btns);
-                btnContainer.appendChild(year);
-                innerDiv.appendChild(p);
-                innerDiv.appendChild(btnContainer);
-                div.appendChild(innerDiv);
-                divOuter.appendChild(div);
-                mainContainer.appendChild(divOuter);
-            } // end of for
-        } // end of function appendData
-    </script>
+    <script src="tcgs.js"></script>
 </body>
 
 </html>
