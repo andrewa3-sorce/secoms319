@@ -52,12 +52,12 @@ function appendData(data) {
 
         let year = document.createElement("small");
         year.classList.add("card-text");
-        year.innerHTML = game["year"];
+        year.innerHTML = "Release Year: " + game["year"];
 
         btns.appendChild(siteBtn);
         btns.appendChild(buyBtn);
-        btnContainer.appendChild(btns);
         btnContainer.appendChild(year);
+        btnContainer.appendChild(btns);
         innerDiv.appendChild(p);
         innerDiv.appendChild(btnContainer);
         div.appendChild(innerDiv);
