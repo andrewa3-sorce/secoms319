@@ -65,14 +65,14 @@ const Shop = () => {
 
   const cartItems = cart.map((el) => (
     <div key={el.id}>
-      <img class="img-fluid" src={el.image} width={30} />
+      <img class="img-fluid" src={el.image} width={20} />
       {el.title}${el.price}
     </div>
   ));
 
   return (
     <div>
-      STORE SE/ComS319
+      STORE A2
       <div class="card">
         <div class="row">
           {/* HERE, IT IS THE SHOPING CART */}
