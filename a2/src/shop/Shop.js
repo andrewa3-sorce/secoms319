@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import items from "./selected_products.json";
+import items from "./data.json";
 const Shop = () => {
   const [cart, setCart] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
@@ -25,7 +25,7 @@ const Shop = () => {
     <div class="row border-top border-bottom" key={el.id}>
       <div class="row main align-items-center">
         <div class="col-2">
-          <img class="img-fluid" src={el.image} />
+          <img class="img-fluid" src={"./images/" + el.image} />
         </div>
         <div class="col">
           <div class="row text-muted">{el.title}</div>
