@@ -4,10 +4,11 @@
     "title": "Magic the Gathering",
     "description": "<strong>Magic the Gathering </strong>is one of the first trading card games to be released. The game was released in 1993 by the same company that created Dungeons and Dragons, Wizards of the Coast.",
     "buyLink": "https://www.tcgplayer.com/search/magic/product?productLineName=magic&page=1&view=grid",
-    "imageName": "Mtg.jpg",
+    "image": "Mtg.jpg",
     "websiteLink": "https://magic.wizards.com/en",
     "year": "1993",
-    "catagory": "Trading Card Game"
+    "category": "Trading Card Game",
+    "price": 10
   },
   {
     "id": 2,
@@ -16,8 +17,9 @@
     "buyLink": "https://www.tcgplayer.com/search/flesh-and-blood-tcg/product?productLineName=flesh-and-blood-tcg&page=1&view=grid",
     "websiteLink": "https://fabtcg.com/",
     "year": "2019",
-    "imageName": "FleshandBlood.webp",
-    "catagory": "Trading Card Game"
+    "image": "FleshandBlood.webp",
+    "category": "Trading Card Game",
+    "price": 25
   },
   {
     "id": 3,
@@ -26,8 +28,9 @@
     "buyLink": "https://www.tcgplayer.com/search/pokemon/product?productLineName=pokemon&page=1&view=grid",
     "websiteLink": "https://www.pokemon.com/us/pokemon-tcg",
     "year": "1996",
-    "imageName": "Pokemon.jpg",
-    "catagory": "Trading Card Game"
+    "image": "Pokemon.jpg",
+    "category": "Trading Card Game",
+    "price": 6
   },
   {
     "id": 4,
@@ -36,18 +39,20 @@
     "buyLink": "https://www.tcgplayer.com/search/yugioh/product?productLineName=yugioh&page=1&view=grid",
     "websiteLink": "https://www.yugioh-card.com/en/",
     "year": "1999",
-    "imageName": "Yugioh.jpg",
-    "catagory": "Trading Card Game"
+    "image": "Yugioh.jpg",
+    "price": 15,
+    "category": "Trading Card Game"
   },
   {
     "id": 5,
     "title": "Digimon",
+    "price": 20.99,
     "description": "<strong>Digimon </strong>is yet another game that was created based on an existing TV show. Originally released in 2000 as \"Digi-Battle\", the game was around for 1 year before the contract between Upper Deck and Bandai expired. In 2020, however, the card game has been rereleased as Digimon Card Game.",
     "buyLink": "https://www.tcgplayer.com/search/digimon-card-game/product?productLineName=digimon-card-game&page=1&view=grid",
     "websiteLink": "https://world.digimoncard.com/",
     "year": "2020",
-    "imageName": "Digimon.webp",
-    "catagory": "Trading Card Game"
+    "image": "Digimon.webp",
+    "category": "Trading Card Game"
   },
   {
     "id": 6,
@@ -56,9 +61,9 @@
     "buyLink": "https://www.pricecharting.com/game/nintendo-64/super-mario-64",
     "websiteLink": "https://www.mariowiki.com/Super_Mario_64",
     "year": "1996",
-    "imageName": "mario-64.jpg",
+    "image": "mario-64.jpg",
     "price": 59.99,
-    "catagory": "Nintendo Game"
+    "category": "Nintendo Game"
   },
   {
     "id": 7,
@@ -67,9 +72,9 @@
     "buyLink": "https://www.pricecharting.com/game/nes/super-mario-bros",
     "websiteLink": "https://en.wikipedia.org/wiki/Super_Mario_Bros.",
     "year": "1985",
-    "imageName": "supermariobros.jpg",
+    "image": "supermariobros.jpg",
     "price": 24.99,
-    "catagory": "Nintendo Game"
+    "category": "Nintendo Game"
   },
   {
     "id": 8,
@@ -78,19 +83,20 @@
     "buyLink": "https://www.pricecharting.com/game/gamecube/super-mario-sunshine",
     "websiteLink": "https://www.mariowiki.com/Super_Mario_Sunshine",
     "year": "2002",
-    "imageName": "supermariosunshine.jpg",
+    "image": "supermariosunshine.jpg",
     "price": 59.99,
-    "catagory": "Nintendo Game"
+    "category": "Nintendo Game"
   },
   {
     "id": 9,
     "title": "Mario Kart Wii",
-    "description": "<strong>Mario Kart Wii </strong> is regarded as one of the best mario kart games to be made. With a unique checkpoint system, players were able to take this game to the extremes; making a whole new catagory of ultra short-cuts.",
+    "description": "<strong>Mario Kart Wii </strong> is regarded as one of the best mario kart games to be made. With a unique checkpoint system, players were able to take this game to the extremes; making a whole new category of ultra short-cuts.",
     "buyLink": "https://www.pricecharting.com/game/wii/mario-kart-wii",
     "websiteLink": "https://www.mariowiki.com/Mario_Kart_Wii",
     "year": "2008",
-    "imageName": "mario-kart-wii.jpg",
-    "price": 59.99
+    "image": "mario-kart-wii.jpg",
+    "price": 59.99,
+    "category": "Nintendo Game"
   },
   {
     "id": 10,
@@ -99,9 +105,9 @@
     "buyLink": "https://www.pricecharting.com/game/nintendo-switch/mario-kart-8-deluxe",
     "websiteLink": "https://www.mariowiki.com/Mario_Kart_8_Deluxe",
     "year": "2017",
-    "imageName": "mk8d.jpg",
+    "image": "mk8d.jpg",
     "price": 59.99,
-    "catagory": "Nintendo Game"
+    "category": "Nintendo Game"
   },
   {
     "id": 11,
@@ -110,8 +116,8 @@
     "buyLink": "https://www.pricecharting.com/game/nintendo-switch/mario-kart-8-deluxe",
     "websiteLink": "https://en.wikipedia.org/wiki/Super_Mario_Galaxy",
     "year": "2007",
-    "imageName": "super-mario-galaxy.jpg",
+    "image": "super-mario-galaxy.jpg",
     "price": 59.99,
-    "catagory": "Nintendo Game"
+    "category": "Nintendo Game"
   }
 ]

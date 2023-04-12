@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import items from "./data.json";
+
 const Shop = () => {
   const [cart, setCart] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
@@ -25,11 +26,19 @@ const Shop = () => {
     <div class="row border-top border-bottom" key={el.id}>
       <div class="row main align-items-center">
         <div class="col-2">
-          <img class="img-fluid" src={"./images/" + el.image} />
+          <img class="img-fluid" src={require("./images/" + el.image)} />
         </div>
         <div class="col">
-          <div class="row text-muted">{el.title}</div>
-          <div class="row">{el.category}</div>
+          <div style={{ color: "white" }} class="row text-muted">
+            <p style={{ color: "white", fontFamily: "monospace" }}>
+              {el.title}
+            </p>
+          </div>
+          <div class="row">
+            <p style={{ color: "gray", fontFamily: "monospace" }}>
+              {el.category}
+            </p>
+          </div>
         </div>
         <div class="col">
           <button
@@ -45,7 +54,7 @@ const Shop = () => {
             +{" "}
           </button>
         </div>
-        <div class="col">
+        <div style={{ color: "white" }} class="col">
           ${el.price} <span class="close">&#10005;</span>
           {howManyofThis(el.id)}
         </div>
@@ -65,26 +74,26 @@ const Shop = () => {
 
   const cartItems = cart.map((el) => (
     <div key={el.id}>
-      <img class="img-fluid" src={el.image} width={20} />
+      <img class="img-fluid" src={"./images/" + el.image} width={20} />
       {el.title}${el.price}
     </div>
   ));
 
   return (
-    <div>
-      STORE A2
-      <div class="card">
-        <div class="row">
+    <div class="bg-dark">
+      <h1 style={{ color: "white", fontFamily: "monospace" }}>
+        Historical Gaming Collectables
+      </h1>
+      <div class="bg-dark-card">
+        <div class="bg-dark-row">
           {/* HERE, IT IS THE SHOPING CART */}
           <div class="col-md-8 cart">
             <div class="title">
               <div class="row">
-                <div class="col">
-                  <h4>
-                    <b>319 Shopping Cart</b>
-                  </h4>
-                </div>
-                <div class="col align-self-center text-right text-muted">
+                <div
+                  style={{ textAlign: "right" }}
+                  class="col align-self-center text-right text-muted"
+                >
                   Products selected {cart.length}
                 </div>
               </div>
