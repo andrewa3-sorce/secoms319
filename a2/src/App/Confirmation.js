@@ -33,6 +33,16 @@ const Confirmation = (props) => {
     return redactedCardNum;
   }
 
+  const addToCart = (el) => {
+    setCart([...cart, el]);
+  };
+
+  const removeFromCart = (el) => {
+    let hardCopy = [...cart];
+    hardCopy = hardCopy.filter((cartItem) => cartItem.id !== el.id);
+    setCart(hardCopy);
+  };
+
   const listItems = uniqueCartItems.map((el) => (
     // PRODUCT
     <div class="row border-top border-bottom" key={el.id}>
@@ -52,8 +62,9 @@ const Confirmation = (props) => {
             </p>
           </div>
         </div>
-        <div class="col">
+        {/* <div class="col">
           <button
+            class="btn btn-info"
             type="button"
             variant="light"
             onClick={() => removeFromCart(el)}
@@ -61,11 +72,16 @@ const Confirmation = (props) => {
             {" "}
             -{" "}
           </button>{" "}
-          <button type="button" variant="light" onClick={() => addToCart(el)}>
+          <button
+            class="btn btn-info"
+            type="button"
+            variant="light"
+            onClick={() => addToCart(el)}
+          >
             {" "}
             +{" "}
           </button>
-        </div>
+        </div> */}
         <div style={{ color: "white" }} class="col">
           ${el.price} <span class="close">&#10005;</span>
           {howManyofThis(el.id)}
@@ -98,15 +114,15 @@ const Confirmation = (props) => {
       <div class="bg-dark-card">
         <div class="bg-dark-row">
           {/* HERE, IT IS THE SHOPING CART */}
-          <div class="col-md-8 cart">
-            <div class="title">
-              <div class="row">
+          <div class="bg-dark col-md-8 cart">
+            <div class="bg-dark title">
+              <div class="bg-dark row">
                 <div
                   style={{ textAlign: "right" }}
-                  class="col align-self-center text-right text-muted"
+                  class="bg-dark col align-self-center text-right text-muted"
                 >
                   Products selected {cart.length}
-                  <div class="col">
+                  <div class="bg-dark col">
                     <h4>
                       <b>Order Confirmed</b>
                     </h4>
@@ -115,32 +131,42 @@ const Confirmation = (props) => {
               </div>
               <div>{listItems}</div>
             </div>
-            <div class="float-end">
-              <p class="mb-0 me-5 d-flex align-items-center">
+            <div class="bg-dark float-end">
+              <p
+                style={{ color: "white" }}
+                class="mb-0 me-5 d-flex align-items-center"
+              >
                 <span class="small text-muted me-2">Order total:</span>
                 <span class="lead fw-normal">${cartTotal.toFixed(2)}</span>
               </p>
-              <p class="mb-0 me-5 d-flex align-items-center">
+              <p
+                style={{ color: "white" }}
+                class="mb-0 me-5 d-flex align-items-center"
+              >
                 <span class="small text-muted me-2">Tax:</span>
-                <span class="lead fw-normal">
+                <span style={{ color: "white" }} class="lead fw-normal">
                   ${(cartTotal * 0.07).toFixed(2)}
                 </span>
               </p>
-              <p class="mb-0 me-5 d-flex align-items-center">
+              <p
+                style={{ color: "white" }}
+                class="mb-0 me-5 d-flex align-items-center"
+              >
                 <span class="small text-muted me-2">Order total w/ tax:</span>
                 <span class="lead fw-normal">
                   ${(cartTotal * 1.07).toFixed(2)}
                 </span>
               </p>
-              <p>{props.name}</p>
-              <p>{props.email}</p>
-              <p>{redactedCardNumber()}</p>
-              <p>{props.address}</p>
-              <p>{props.address2}</p>
-              <p>{props.city}</p>
-              <p>{props.state}</p>
-              <p>{props.zip}</p>
+              <p style={{ color: "white" }}>{props.name}</p>
+              <p style={{ color: "white" }}>{props.email}</p>
+              <p style={{ color: "white" }}>{redactedCardNumber()}</p>
+              <p style={{ color: "white" }}>{props.address}</p>
+              <p style={{ color: "white" }}>{props.address2}</p>
+              <p style={{ color: "white" }}>{props.city}</p>
+              <p style={{ color: "white" }}>{props.state}</p>
+              <p style={{ color: "white" }}>{props.zip}</p>
               <button
+                class="btn btn-success"
                 onClick={() => {
                   returnToShop();
                 }}
