@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/secoms319/static/css/main.7e672d84.css",
+    "main.js": "/secoms319/static/js/main.8deddddd.js",
+    "static/media/supermariosunshine.jpg": "/secoms319/static/media/supermariosunshine.629a4f82b9dda5796bcc.jpg",
+    "static/media/supermariobros.jpg": "/secoms319/static/media/supermariobros.b6488acb299779b6e10f.jpg",
+    "static/media/super-mario-galaxy.jpg": "/secoms319/static/media/super-mario-galaxy.01f6b2dc4396fbb96966.jpg",
+    "static/media/mario-kart-wii.jpg": "/secoms319/static/media/mario-kart-wii.35716484ef8ec349da31.jpg",
+    "static/media/Pokemon.jpg": "/secoms319/static/media/Pokemon.1e64d454fcaab0207026.jpg",
+    "static/media/mario-64.jpg": "/secoms319/static/media/mario-64.2dc0ec1bb7a0adf4cb97.jpg",
+    "static/media/mk8d.jpg": "/secoms319/static/media/mk8d.e44310c8696fc7c7ba52.jpg",
+    "static/media/Yugioh.jpg": "/secoms319/static/media/Yugioh.431909d85b4497271e79.jpg",
+    "static/media/FleshandBlood.webp": "/secoms319/static/media/FleshandBlood.78d750dbe5257e0fd0b3.webp",
+    "static/media/Digimon.webp": "/secoms319/static/media/Digimon.1e4c1665c7b0894aaca3.webp",
+    "static/media/Mtg.jpg": "/secoms319/static/media/Mtg.b6556c50937a38c0a4f3.jpg",
+    "index.html": "/secoms319/index.html",
+    "main.7e672d84.css.map": "/secoms319/static/css/main.7e672d84.css.map",
+    "main.8deddddd.js.map": "/secoms319/static/js/main.8deddddd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7e672d84.css",
+    "static/js/main.8deddddd.js"
+  ]
+}
