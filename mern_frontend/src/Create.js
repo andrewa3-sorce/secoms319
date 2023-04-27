@@ -73,7 +73,7 @@ function Create() {
         <h1>
             Create
         </h1>
-        <form class="row g-3 form-border" id="checkout-form">
+        <form class="row g-3 form-border" id="create-form">
             <div class="form-group">
                   <label for="Title" class="form-label">
                     Title
