@@ -24,3 +24,38 @@ app.get("/", async (req, resp) => {
   console.log(allProducts);
   resp.send(allProducts);
 });
+
+app.get("/:id", async (req, resp) => {
+  const id = req.params.id;
+  const query = { _id: id };
+  const oneProduct = await Product.findOne(query);
+  console.log(oneProduct);
+  resp.send(oneProduct);
+});
+
+app.delete("/:id", async (req, resp) => {
+  const id = req.params.id;
+  const query = { _id: id };
+  Product.deleteOne(query);
+  console.log("deleted item " + id);
+  resp.send("delelted " + id + "!");
+});
+
+app.put("/:id/:price", async (req, resp) => {
+  const id = req.params.id;
+  const price = req.params.price;
+
+  Product.updateOne(id, price);
+  console.log("updated item " + id + "'s price to " + price);
+  resp.send("updated item " + id + "'s price to " + price);
+});
+
+app.use(bodyParser.json());
+
+app.post("/create", async (req, resp) => {
+  const params = req.body;
+
+  Product.create(params);
+  console.log(params);
+  resp.send("success");
+});
