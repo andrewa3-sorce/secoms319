@@ -59,6 +59,13 @@ function Update() {
       <React.StrictMode>
         <Update />
         <ItemInfoPartial />
+        <div class="form-group">
+            <label for="newPrice" class="form-label">
+              New Price
+            </label>
+            <input type="number" class="form-control" id="newPrice" min="0" placeholder="" />
+          </div>
+        <button class="btn btn-primary">Update Price</button>
     </React.StrictMode>
     );
   }

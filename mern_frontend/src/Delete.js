@@ -3,6 +3,7 @@ import App from './App';
 import Read from './Read';
 import Update from './Update';
 import Create from './Create';
+import ItemInfoPartial from "./ItemInfoPartial";
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -51,6 +52,21 @@ function Delete() {
           </React.StrictMode>
         );
       }
+
+      function deleteItem(){
+
+      }
+
+      function renderItemPartial(){
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        root.render(
+          <React.StrictMode>
+            <Delete />
+            <ItemInfoPartial />
+            <button class="btn btn-primary" onClick={() => deleteItem()}>Delete Item</button>
+        </React.StrictMode>
+        );
+      }
   return (
     <div>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -73,6 +89,15 @@ function Delete() {
         <h1>
             Delete
         </h1>
+        <div class="form-group">
+            <label for="_id" class="form-label">
+              Id
+            </label>
+            <input type="number" class="form-control" id="_id" min="0" placeholder="" />
+          </div>
+          <button class="btn btn-primary" onClick={() => renderItemPartial()}>
+            Find product
+          </button>
     </div>
     </div>
   );
