@@ -4,6 +4,7 @@ const cors = require("cors");
 const { find } = require("./dataSchema");
 const app = express();
 const Product = require("./dataSchema");
+const bodyParser = require('body-parser');
 
 app.use(express.json());
 app.use(cors());

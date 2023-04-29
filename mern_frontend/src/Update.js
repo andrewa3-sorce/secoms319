@@ -53,21 +53,107 @@ function Update() {
     );
   }
 
-  function renderItemPartial(){
-    const root = ReactDOM.createRoot(document.getElementById("root"));
-    root.render(
-      <React.StrictMode>
-        <Update />
-        <ItemInfoPartial />
-        <div class="form-group">
-            <label for="newPrice" class="form-label">
-              New Price
-            </label>
-            <input type="number" class="form-control" id="newPrice" min="0" placeholder="" />
-          </div>
-        <button class="btn btn-primary">Update Price</button>
-    </React.StrictMode>
-    );
+  function findItem() {
+    let itemId = document.getElementById("_id").value;
+    document.getElementById("findProduct").remove();
+    fetch("http://localhost:4000/" + itemId, {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        let mainContainer = document.getElementById("product");
+        let div1 = document.createElement("div");
+        div1.classList.add("col-md-4", "mt-2");
+
+        let div2 = document.createElement("div");
+        div2.classList.add("card");
+
+        let div3 = document.createElement("div");
+        div3.classList.add("card-body");
+
+        let div4 = document.createElement("div");
+        div4.classList.add("card-image-actions");
+        div4.innerHTML = "Image";
+
+        let div5 = document.createElement("div");
+        div5.classList.add("card-body", "bg-light", "text-center");
+
+        let div6 = document.createElement("div");
+        div6.classList.add("mb-2");
+
+        let h6 = document.createElement("h6");
+        h6.classList.add("font-weight-semibold", "mb-2");
+
+        let title = document.createElement("a");
+        title.href = "#";
+        title.classList.add("text-default", "mb-2");
+        title.innerHTML = `${data.title}`;
+
+        let category = document.createElement("a");
+        category.href = "#";
+        category.classList.add("text-muted");
+        category.innerHTML = `${data.category}`;
+
+        let h3 = document.createElement("h3");
+        h3.classList.add("font-weight-semibold", "mb-0");
+        h3.innerHTML = `$${data.price}`;
+
+        let h7 = document.createElement("h7");
+        h7.innerHTML = `${data.description}`;
+
+        let div7 = document.createElement("div");
+        div7.classList.add("text-muted", "mb-3");
+        div7.innerHTML = `${data.rating.rate}/5 Rating | ${data.rating.count} Reviews`;
+
+        let group = document.createElement("div");
+        group.classList.add("form-group");
+
+        let label = document.createElement("label");
+        label.classList.add("form-label");
+        label.for = "newPrice";
+        label.innerHTML = "New Price";
+
+        let input = document.createElement("input");
+        input.classList.add("form-control");
+        input.type = "number";
+        input.id = "newPrice";
+        input.min = 0;
+        input.placeholder = "";
+
+        let button = document.createElement("button");
+        button.classList.add("btn", "btn-primary");
+        button.id = "submitPrice";
+        button.onclick = function(){
+          let itemId = document.getElementById("_id").value;
+          let newPrice = document.getElementById("newPrice").value;
+          fetch("http://localhost:4000/" + itemId + "/" + newPrice, {
+            method: "PUT",
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log("New price is " + data);
+            });
+        }
+        button.innerHTML = "Update";
+
+        group.appendChild(label);
+        group.appendChild(input);
+        group.appendChild(button);
+
+        h6.appendChild(title);
+        div6.appendChild(h6);
+        div6.appendChild(category);
+        div5.appendChild(div6);
+        div5.appendChild(h3);
+        div5.appendChild(h7);
+        div5.appendChild(div7);
+        div3.appendChild(div4);
+        div2.appendChild(div3);
+        div2.appendChild(div5);
+        div1.appendChild(div2);
+        mainContainer.appendChild(div1);
+        mainContainer.appendChild(group);
+      });
   }
   return (
     <div>
@@ -108,15 +194,26 @@ function Update() {
       <div>
         <h1>Update</h1>
         <div class="form-group">
-            <label for="_id" class="form-label">
-              Id
-            </label>
-            <input type="number" class="form-control" id="_id" min="0" placeholder="" />
-          </div>
-          <button class="btn btn-primary" onClick={() => renderItemPartial()}>
-            Find product
-          </button>
+          <label for="_id" class="form-label">
+            Id
+          </label>
+          <input
+            type="number"
+            class="form-control"
+            id="_id"
+            min="0"
+            placeholder=""
+          />
+        </div>
+        <button
+          class="btn btn-primary"
+          id="findProduct"
+          onClick={() => findItem()}
+        >
+          Find product
+        </button>
       </div>
+      <div id="product"></div>
     </div>
   );
 }
