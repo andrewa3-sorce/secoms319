@@ -13,13 +13,18 @@ function Create() {
     fetch("http://localhost:4000/")
     .then((response) => response.json())
     .then((data) => {
-      largest = data[0]._id;
+      if(data.length != 0){
+        largest = data[0]._id;
       for (let i in data) {
         if (data[i]._id > largest){
           largest = data[i]._id;
         }
       }
       idCount = largest+1;
+      }
+      else {
+        idCount = 0;
+      }
     });
   function goToApp() {
     const root = ReactDOM.createRoot(document.getElementById("root"));

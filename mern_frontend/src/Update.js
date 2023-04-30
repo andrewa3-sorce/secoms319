@@ -123,17 +123,21 @@ function Update() {
         let button = document.createElement("button");
         button.classList.add("btn", "btn-primary");
         button.id = "submitPrice";
-        button.onclick = function(){
+        button.onclick = function () {
           let itemId = document.getElementById("_id").value;
           let newPrice = document.getElementById("newPrice").value;
-          fetch("http://localhost:4000/" + itemId + "/" + newPrice, {
+          fetch("http://localhost:4000/" + itemId, {
             method: "PUT",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({
+              price: newPrice
+            })
           })
             .then((response) => response.json())
             .then((data) => {
               console.log("New price is " + data);
             });
-        }
+        };
         button.innerHTML = "Update";
 
         group.appendChild(label);

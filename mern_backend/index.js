@@ -42,11 +42,10 @@ app.delete("/:id", async (req, resp) => {
   resp.send("delelted " + id + "!");
 });
 
-app.put("/:id/:price", async (req, resp) => {
+app.put("/:id", async (req, resp) => {
   const id = req.params.id;
-  const price = req.params.price;
-
-  Product.updateOne(id, price);
+  const price = req.body.price;
+  const updateResult = await Product.updateOne({_id: req.params.id}, {$set: {price: req.body.price}} );
   console.log("updated item " + id + "'s price to " + price);
   resp.send("updated item " + id + "'s price to " + price);
 });
