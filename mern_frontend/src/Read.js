@@ -6,9 +6,12 @@ import Delete from "./Delete";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+let displayedData = false;
 
 function Read() {
+
   function goToApp() {
+    displayedData = false;
     const root = ReactDOM.createRoot(document.getElementById("root"));
     root.render(
       <React.StrictMode>
@@ -17,6 +20,7 @@ function Read() {
     );
   }
   function goToCreate() {
+    displayedData = false;
     const root = ReactDOM.createRoot(document.getElementById("root"));
     root.render(
       <React.StrictMode>
@@ -26,6 +30,7 @@ function Read() {
   }
 
   function goToRead() {
+    displayedData = false;
     const root = ReactDOM.createRoot(document.getElementById("root"));
     root.render(
       <React.StrictMode>
@@ -35,6 +40,7 @@ function Read() {
   }
 
   function goToUpdate() {
+    displayedData = false;
     const root = ReactDOM.createRoot(document.getElementById("root"));
     root.render(
       <React.StrictMode>
@@ -44,6 +50,7 @@ function Read() {
   }
 
   function goToDelete() {
+    displayedData = false;
     const root = ReactDOM.createRoot(document.getElementById("root"));
     root.render(
       <React.StrictMode>
@@ -52,12 +59,20 @@ function Read() {
     );
   }
 
+  function executeDisplay(){
+    if (!displayedData){
+      getAllMethod();
+      console.log("executed");
+      displayedData = true;
+    }
+  }
+
   function getAllMethod() {
     fetch("http://localhost:4000/")
       .then((response) => response.json())
       .then((data) => {
-        console.log();
         let mainContainer = document.getElementById("productList");
+        console.log(data);
           for (let i in data) {
             let div1 = document.createElement("div");
             div1.classList.add("col-md-4", "mt-2");
@@ -118,7 +133,7 @@ function Read() {
       });
   }
 
-  getAllMethod();
+  executeDisplay();
   return (
     <div>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
