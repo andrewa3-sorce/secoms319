@@ -3,8 +3,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const { find } = require("./dataSchema");
 const app = express();
-const Product = require("./dataSchema");
-const bodyParser = require('body-parser');
+const Product = require("./dataSchema.js");
+const bodyParser = require("body-parser");
 
 app.use(express.json());
 app.use(cors());
@@ -34,29 +34,65 @@ app.get("/:id", async (req, resp) => {
   resp.send(oneProduct);
 });
 
-app.delete("/:id", async (req, resp) => {
-  const id = req.params.id;
-  const query = { _id: id };
-  Product.deleteOne(query);
-  console.log("deleted item " + id);
-  resp.send("delelted " + id + "!");
+app.delete("/delete", async (req, res) => {
+  console.log("Delete :", req.body);
+  try {
+    const query = { _id: req.body._id };
+    await Product.deleteOne(query);
+    console.log("deleted------");
+    const messageResponse = {
+      message: `Product ${req.body._id} deleted correctly`,
+    };
+    res.send(JSON.stringify(messageResponse));
+  } catch (err) {
+    console.log("Error while deleting :" + p_id + " " + err);
+  }
 });
 
 app.put("/:id/:price", async (req, resp) => {
-  const id = req.params.id;
-  const price = req.params.price;
+  //const id = req.params.id;
+  //const price = req.params.price;
+  //console.log(id + " " + price);
+  //const query = { _id: id };
+  //const query2 = { price: price };
 
-  Product.updateOne(id, price);
-  console.log("updated item " + id + "'s price to " + price);
-  resp.send("updated item " + id + "'s price to " + price);
+  const { _id, id } = req.params.id;
+  const { _price, newValue } = req.params.price;
+
+  Product.updateOne({ [_id]: id }, { [_price]: newValue });
+
+  //console.log("updated item " + id + "'s price to " + price);
+  //resp.send("updated item " + id + "'s price to " + price);
 });
 
 app.use(bodyParser.json());
 
-app.post("/create", async (req, resp) => {
-  const params = req.body;
+app.post("/insert", async (req, res) => {
+  console.log(req.body);
+  const p_id = req.body._id;
+  const ptitle = req.body.title;
+  const pprice = req.body.price;
+  const pdescription = req.body.description;
+  const pcategory = req.body.category;
+  const pimage = req.body.image;
+  const prate = req.body.rating.rate;
+  const pcount = req.body.rating.count;
 
-  Product.create(params);
-  console.log(params);
-  resp.send("success");
+  const formData = new Product({
+    _id: p_id,
+    title: ptitle,
+    price: pprice,
+    description: pdescription,
+    category: pcategory,
+    image: pimage,
+    rating: { rate: prate, count: pcount },
+  });
+  try {
+    // await formData.save();
+    await Product.create(formData);
+    const messageResponse = { message: `Product ${p_id} added correctly` };
+    res.send(JSON.stringify(messageResponse));
+  } catch (err) {
+    console.log("Error while adding a new product:" + err);
+  }
 });
