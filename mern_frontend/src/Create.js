@@ -71,7 +71,7 @@ function Create() {
   }
 
   function postMethod() {
-    fetch("http://localhost:4000/create", {
+    fetch("http://localhost:4000/insert", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
