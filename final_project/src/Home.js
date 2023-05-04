@@ -2,6 +2,7 @@ import VideoGames from "./VideoGames";
 import ReactDOM from "react-dom/client";
 import React, { useState, useEffect } from "react";
 import { Products } from "./data";
+import './Home.css';
 
 function Home(props) {
   let cartState = [];

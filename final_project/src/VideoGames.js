@@ -2,6 +2,7 @@ import ReactDOM from "react-dom/client";
 import React, { useState, useEffect } from "react";
 import { Products } from "./data";
 import Home from "./Home";
+import "./VideoGames.css";
 
 export const VideoGames = (props) => {
   console.log("Step 1: After reading file :");
@@ -62,7 +63,6 @@ export const VideoGames = (props) => {
           className="text-3xl font-extrabold tracking-tight text-gray-600 category-
 title"
         >
-          Products ({ProductsCategory.length})
         </h2>
         <div
           className="m-6 p-3 mt-10 ml-0 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-
@@ -74,7 +74,9 @@ cols-2 lg:grid-cols-6 xl:gap-x-10"
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
                 <div class="card-body">
-                  <p class="card-text"></p>
+                  <p class="card-text">
+                    {product.description}
+                  </p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <button
@@ -122,7 +124,7 @@ cols-2 lg:grid-cols-6 xl:gap-x-10"
     console.log("Step 4 : in handleClick", tag);
     let filtered = Products.filter((cat) => cat.category === tag);
     setProductsCategory(filtered);
-    // ProductsCategory = filtered;
+    ProductsCategory = filtered;
     console.log("Step 5 : ", Products.length, ProductsCategory.length);
   }
   const handleChange = (e) => {
@@ -142,76 +144,24 @@ cols-2 lg:grid-cols-6 xl:gap-x-10"
     setProductsCategory(results);
   };
   return (
-    <body>
-      <header class="masthead mb-auto">
-        <div class="inner">
-          <h3 class="masthead-brand">Gaming Store</h3>
-          <nav class="nav nav-masthead justify-content-center">
-            <a
-              class="nav-link active"
-              onClick={() =>
-                function goToVideoGames() {
-                  const root = ReactDOM.createRoot(
-                    document.getElementById("root")
-                  );
-                  root.render(
-                    <React.StrictMode>
-                      <VideoGames cart={cart} />
-                    </React.StrictMode>
-                  );
-                }
-              }
-            >
-              Home
-            </a>
-            <a class="nav-link">Video Games</a>
-            <a class="nav-link" href="#">
-              Trading Card Games
-            </a>
-          </nav>
-        </div>
-      </header>
-      <main role="main">
-        <section class="jumbotron text-center">
-          <div class="container">
-            <h1 class="jumbotron-heading">Album example</h1>
-            <p class="lead text-muted">
-              Something short and leading about the collection below—its
-              contents, the creator, etc. Make it short and sweet, but not too
-              short so folks don't simply skip over it entirely.
-            </p>
-            <p>
-              <a href="#" class="btn btn-primary my-2">
-                Main call to action
-              </a>
-              <a href="#" class="btn btn-secondary my-2">
-                Secondary action
-              </a>
-            </p>
-          </div>
-        </section>
+    <main role="main">
 
-        <div class="album py-5 bg-light">
-          <div class="container"></div>
-        </div>
-      </main>
-
-      <footer class="text-muted">
+      <section class="jumbotron text-center">
         <div class="container">
-          <p class="float-right">
-            <a href="#">Back to top</a>
-          </p>
-          <p>
-            Album example is &copy; Bootstrap, but please download and customize
-            it for yourself!
-          </p>
-          <p>
-            New to Bootstrap? <a href="../../">Visit the homepage</a> or read
-            our <a href="../../getting-started/">getting started guide</a>.
-          </p>
+          <h1 class="jumbotron-heading">Video Games</h1>
+          <p class="lead text-muted">Shop our collectible video games!</p>
         </div>
-      </footer>
-    </body>
+      </section>
+
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row">
+            {render_products()}
+          </div>
+        </div>
+      </div>
+
+    </main>
   );
 };
 
