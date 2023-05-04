@@ -6,9 +6,12 @@ import Delete from "./Delete";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+let displayedData = false;
 
 function Read() {
+
   function goToApp() {
+    displayedData = false;
     const root = ReactDOM.createRoot(document.getElementById("root"));
     root.render(
       <React.StrictMode>
@@ -17,6 +20,7 @@ function Read() {
     );
   }
   function goToCreate() {
+    displayedData = false;
     const root = ReactDOM.createRoot(document.getElementById("root"));
     root.render(
       <React.StrictMode>
@@ -26,6 +30,7 @@ function Read() {
   }
 
   function goToRead() {
+    displayedData = false;
     const root = ReactDOM.createRoot(document.getElementById("root"));
     root.render(
       <React.StrictMode>
@@ -35,6 +40,7 @@ function Read() {
   }
 
   function goToUpdate() {
+    displayedData = false;
     const root = ReactDOM.createRoot(document.getElementById("root"));
     root.render(
       <React.StrictMode>
@@ -44,6 +50,7 @@ function Read() {
   }
 
   function goToDelete() {
+    displayedData = false;
     const root = ReactDOM.createRoot(document.getElementById("root"));
     root.render(
       <React.StrictMode>
@@ -51,6 +58,82 @@ function Read() {
       </React.StrictMode>
     );
   }
+
+  function executeDisplay(){
+    if (!displayedData){
+      getAllMethod();
+      console.log("executed");
+      displayedData = true;
+    }
+  }
+
+  function getAllMethod() {
+    fetch("http://localhost:4000/")
+      .then((response) => response.json())
+      .then((data) => {
+        let mainContainer = document.getElementById("productList");
+        console.log(data);
+          for (let i in data) {
+            let div1 = document.createElement("div");
+            div1.classList.add("col-md-4", "mt-2");
+
+            let div2 = document.createElement("div");
+            div2.classList.add("card"); 
+
+            let div3 = document.createElement("div");
+            div3.classList.add("card-body"); 
+
+            let div4 = document.createElement("div");
+            div4.classList.add("card-image-actions");
+            div4.innerHTML = "Image";
+
+            let div5 = document.createElement("div");
+            div5.classList.add("card-body", "bg-light", "text-center"); 
+
+            let div6 = document.createElement("div");
+            div6.classList.add("mb-2"); 
+
+            let h6 = document.createElement("h6");
+            h6.classList.add("font-weight-semibold", "mb-2"); 
+
+            let title = document.createElement("a");
+            title.href = "#";
+            title.classList.add("text-default", "mb-2");
+            title.innerHTML = `${data[i].title}`;
+
+            let category = document.createElement("a");
+            category.href = "#";
+            category.classList.add("text-muted");
+            category.innerHTML = `${data[i].category}`;
+
+            let h3 = document.createElement("h3");
+            h3.classList.add("font-weight-semibold", "mb-0"); 
+            h3.innerHTML = `$${data[i].price}`;
+
+            let h7 = document.createElement("h7");
+            h7.innerHTML = `${data[i].description}`;
+
+            let div7 = document.createElement("div");
+            div7.classList.add("text-muted", "mb-3"); 
+            div7.innerHTML = `${data[i].rating.rate}/5 Rating | ${data[i].rating.count} Reviews`;
+
+            h6.appendChild(title);
+            div6.appendChild(h6);
+            div6.appendChild(category);
+            div5.appendChild(div6);
+            div5.appendChild(h3);
+            div5.appendChild(h7);
+            div5.appendChild(div7);
+            div3.appendChild(div4);
+            div2.appendChild(div3);
+            div2.appendChild(div5);
+            div1.appendChild(div2);
+            mainContainer.appendChild(div1);
+          } // end of for
+      });
+  }
+
+  executeDisplay();
   return (
     <div>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -90,73 +173,7 @@ function Read() {
       <div>
         <h1>Read</h1>
         <div class="container d-flex justify-content-center mt-50 mb-50">
-          <div class="row">
-            <div class="col-md-4 mt-2">
-              <div class="card">
-                <div class="card-body">
-                  <div class="card-img-actions">Image</div>
-                </div>
-                <div class="card-body bg-light text-center">
-                  <div class="mb-2">
-                    <h6 class="font-weight-semibold mb-2">
-                      <a href="#" class="text-default mb-2" data-abc="true">
-                        Toshiba Notebook with 500GB HDD & 8GB RAM
-                      </a>
-                    </h6>
-                    <a href="#" class="text-muted" data-abc="true">
-                      Laptops & Notebooks
-                    </a>
-                  </div>
-                  <h3 class="mb-0 font-weight-semibold">$250.99</h3>
-                  <h7>Description here</h7>
-                  <div class="text-muted mb-3">4.3/5.0 rating | 34 reviews</div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 mt-2">
-              <div class="card">
-                <div class="card-body">
-                  <div class="card-img-actions">Image</div>
-                </div>
-                <div class="card-body bg-light text-center">
-                  <div class="mb-2">
-                    <h6 class="font-weight-semibold mb-2">
-                      <a href="#" class="text-default mb-2" data-abc="true">
-                        Toshiba Notebook with 500GB HDD & 8GB RAM
-                      </a>
-                    </h6>
-                    <a href="#" class="text-muted" data-abc="true">
-                      Laptops & Notebooks
-                    </a>
-                  </div>
-                  <h3 class="mb-0 font-weight-semibold">$250.99</h3>
-                  <h7>Description here</h7>
-                  <div class="text-muted mb-3">4.3/5.0 rating | 34 reviews</div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 mt-2">
-              <div class="card">
-                <div class="card-body">
-                  <div class="card-img-actions">Image</div>
-                </div>
-                <div class="card-body bg-light text-center">
-                  <div class="mb-2">
-                    <h6 class="font-weight-semibold mb-2">
-                      <a href="#" class="text-default mb-2" data-abc="true">
-                        Toshiba Notebook with 500GB HDD & 8GB RAM
-                      </a>
-                    </h6>
-                    <a href="#" class="text-muted" data-abc="true">
-                      Laptops & Notebooks
-                    </a>
-                  </div>
-                  <h3 class="mb-0 font-weight-semibold">$250.99</h3>
-                  <h7>Description here</h7>
-                  <div class="text-muted mb-3">4.3/5.0 rating | 34 reviews</div>
-                </div>
-              </div>
-            </div>
+          <div id="productList" class="row">
           </div>
         </div>
       </div>
