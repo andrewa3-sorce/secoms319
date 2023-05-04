@@ -1,7 +1,6 @@
 import VideoGames from "./VideoGames";
 import ReactDOM from "react-dom/client";
 import React, { useState, useEffect } from "react";
-import { Products } from "./data";
 import './Home.css';
 
 function Home(props) {
@@ -11,7 +10,7 @@ function Home(props) {
       cartState.push(props.cart[i]);
     }
   }
-  const [ProductsCategory, setProductsCategory] = useState(Products);
+  //const [ProductsCategory, setProductsCategory] = useState(Products);
   const [query, setQuery] = useState("");
 
   const [cart, setCart] = useState(cartState);
@@ -37,8 +36,7 @@ function Home(props) {
     );
   }
   return (
-    <body class="text-center">
-      <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
         <header class="masthead mb-auto">
           <div class="inner">
             <h3 class="masthead-brand">Gaming Store</h3>
@@ -74,7 +72,6 @@ function Home(props) {
           </p>
         </main>
       </div>
-    </body>
   );
 }
 

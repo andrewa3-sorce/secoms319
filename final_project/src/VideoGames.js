@@ -1,8 +1,8 @@
 import ReactDOM from "react-dom/client";
 import React, { useState, useEffect } from "react";
-import { Products } from "./data";
 import Home from "./Home";
 import "./VideoGames.css";
+let displayedData = false;
 
 export const VideoGames = (props) => {
   console.log("Step 1: After reading file :");
@@ -12,7 +12,7 @@ export const VideoGames = (props) => {
       cartState.push(props.cart[i]);
     }
   }
-  const [ProductsCategory, setProductsCategory] = useState(Products);
+  //const [ProductsCategory, setProductsCategory] = useState(Products);
   const [query, setQuery] = useState("");
 
   const [cart, setCart] = useState(cartState);
@@ -54,52 +54,37 @@ export const VideoGames = (props) => {
   }
 
   // var ProductsCategory = Products;
-  const render_products = (ProductsCategory) => {
+  const render_products = () => {
+    for(let i=0; i<9; ++i){
+
+    }
     return (
-      <div className="category-section fixed">
-        {console.log("Step 3 : in render_products ")}
-        <h2
-          style={{ color: "white" }}
-          className="text-3xl font-extrabold tracking-tight text-gray-600 category-
-title"
-        >
-        </h2>
-        <div
-          className="m-6 p-3 mt-10 ml-0 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-
-cols-2 lg:grid-cols-6 xl:gap-x-10"
-          style={{ maxHeight: "800px", overflowY: "scroll" }}
-        >
-          {/* Loop Products */}
-          {ProductsCategory.map((product, index) => (
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <div class="card-body">
-                  <p class="card-text">
-                    {product.description}
-                  </p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        View
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        Edit
-                      </button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
+          <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+              <div class="card-body">
+                <p class="card-text">
+                  Description here
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-outline-secondary"
+                    >
+                      View
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-outline-secondary"
+                    >
+                      Edit
+                    </button>
                   </div>
+                  <small class="text-muted">9 mins</small>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-      </div>
+          </div>
     );
   };
 
@@ -122,10 +107,10 @@ cols-2 lg:grid-cols-6 xl:gap-x-10"
 
   function handleClick(tag) {
     console.log("Step 4 : in handleClick", tag);
-    let filtered = Products.filter((cat) => cat.category === tag);
-    setProductsCategory(filtered);
-    ProductsCategory = filtered;
-    console.log("Step 5 : ", Products.length, ProductsCategory.length);
+    //let filtered = Products.filter((cat) => cat.category === tag);
+    //setProductsCategory(filtered);
+    //ProductsCategory = filtered;
+    //console.log("Step 5 : ", Products.length, ProductsCategory.length);
   }
   const handleChange = (e) => {
     setQuery(e.target.value);
@@ -135,33 +120,115 @@ cols-2 lg:grid-cols-6 xl:gap-x-10"
       " Query Value :",
       query
     );
-    const results = ProductsCategory.filter((eachProduct) => {
-      if (e.target.value === "") return ProductsCategory;
-      return eachProduct.title
-        .toLowerCase()
-        .includes(e.target.value.toLowerCase());
-    });
-    setProductsCategory(results);
+    //const results = ProductsCategory.filter((eachProduct) => {
+      //if (e.target.value === "") return ProductsCategory;
+      //return eachProduct.title
+        //.toLowerCase()
+        //.includes(e.target.value.toLowerCase());
+    //});
+    //setProductsCategory(results);
   };
+
+  function executeDisplay(){
+    if (!displayedData){
+      getAllMethod();
+      console.log("executed");
+      displayedData = true;
+    }
+  }
+
+  function getAllMethod() {
+    fetch("http://localhost:4001/")
+      .then((response) => response.json())
+      .then((data) => {
+        let mainContainer = document.getElementById("productList");
+        console.log(data);
+          for (let i in data) {
+            let div1 = document.createElement("div");
+            div1.classList.add("col-md-4", "mt-2");
+
+            let div2 = document.createElement("div");
+            div2.classList.add("card"); 
+
+            let div3 = document.createElement("div");
+            div3.classList.add("card-body"); 
+
+            let div4 = document.createElement("div");
+            div4.classList.add("card-image-actions");
+            div4.innerHTML = "Image";
+
+            let div5 = document.createElement("div");
+            div5.classList.add("card-body", "bg-light", "text-center"); 
+
+            let div6 = document.createElement("div");
+            div6.classList.add("mb-2"); 
+
+            let h6 = document.createElement("h6");
+            h6.classList.add("font-weight-semibold", "mb-2"); 
+
+            let title = document.createElement("a");
+            title.href = "#";
+            title.classList.add("text-default", "mb-2");
+            title.innerHTML = `${data[i].title}`;
+
+            let category = document.createElement("a");
+            category.href = "#";
+            category.classList.add("text-muted");
+            category.innerHTML = `${data[i].category}`;
+
+            let h3 = document.createElement("h3");
+            h3.classList.add("font-weight-semibold", "mb-0"); 
+            h3.innerHTML = `$${data[i].price}`;
+
+            let h7 = document.createElement("h7");
+            h7.innerHTML = `${data[i].description}`;
+
+            h6.appendChild(title);
+            div6.appendChild(h6);
+            div6.appendChild(category);
+            div5.appendChild(div6);
+            div5.appendChild(h3);
+            div5.appendChild(h7);
+            div3.appendChild(div4);
+            div2.appendChild(div3);
+            div2.appendChild(div5);
+            div1.appendChild(div2);
+            mainContainer.appendChild(div1);
+          } // end of for
+      });
+  }
+
+  executeDisplay();
+
   return (
-    <main role="main">
-
-      <section class="jumbotron text-center">
-        <div class="container">
-          <h1 class="jumbotron-heading">Video Games</h1>
-          <p class="lead text-muted">Shop our collectible video games!</p>
+    <div>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+            </div>
+          </div>
         </div>
-      </section>
-
-      <div class="album py-5 bg-light">
-        <div class="container">
-          <div class="row">
-            {render_products()}
+      </nav>
+      <div>
+        <h1>Read</h1>
+        <div class="container d-flex justify-content-center mt-50 mb-50">
+          <div id="productList" class="row">
           </div>
         </div>
       </div>
-
-    </main>
+    </div>
   );
 };
 
