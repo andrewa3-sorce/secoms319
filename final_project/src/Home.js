@@ -1,4 +1,5 @@
-import VideoGames from "./VideoGames";
+import VideoGames from "./VideoGames.js";
+import TradingCardGames from "./TradingCardGames.js";
 import ReactDOM from "react-dom/client";
 import React, { useState, useEffect } from "react";
 import './Home.css';
@@ -35,24 +36,39 @@ function Home(props) {
       </React.StrictMode>
     );
   }
+  function goToTradingCardGames() {
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(
+      <React.StrictMode>
+        <TradingCardGames cart={cart} />
+      </React.StrictMode>
+    );
+  }
+  function goToHome() {
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(
+      <React.StrictMode>
+        <Home cart={cart} />
+      </React.StrictMode>
+    );
+  }
   return (
     <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
         <header class="masthead mb-auto">
           <div class="inner">
             <h3 class="masthead-brand">Gaming Store</h3>
             <nav class="nav nav-masthead justify-content-center">
-              <a class="nav-link active" href="#">
+              <a class="nav-link" onClick={()=>goToHome()}>
                 Home
               </a>
               <a
                 class="nav-link"
-                onClick={() => {
-                  goToVideoGames();
-                }}
+                onClick={() => goToVideoGames()}
               >
                 Video Games
               </a>
-              <a class="nav-link" href="#">
+              <a class="nav-link"
+                onClick={() => goToTradingCardGames()}>
                 Trading Card Games
               </a>
             </nav>

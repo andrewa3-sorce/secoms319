@@ -1,11 +1,11 @@
 import ReactDOM from "react-dom/client";
 import React, { useState, useEffect } from "react";
 import Home from "./Home";
-import TradingCardGames from "./TradingCardGames";
+import VideoGames from "./VideoGames";
 import "./Games.css";
 let displayedData = false;
 
-export const VideoGames = (props) => {
+export const TradingCardGames = (props) => {
   console.log("Step 1: After reading file :");
   let cartState = [];
   if (props.cart != null) {
@@ -156,7 +156,7 @@ export const VideoGames = (props) => {
         let mainContainer = document.getElementById("productList");
         console.log(data);
           for (let i in data) {
-            if(data[i].category == "Nintendo Game"){
+            if(data[i].category == "Trading Card Game"){
               let div1 = document.createElement("div");
             div1.classList.add("col-md-4", "mt-2");
 
@@ -237,7 +237,7 @@ export const VideoGames = (props) => {
           </div>
         </header>
       <div>
-        <h1>Video Games</h1>
+        <h1>Trading Card Games</h1>
         <div class="container d-flex justify-content-center mt-50 mb-50">
           <div id="productList" class="row">
           </div>
@@ -247,4 +247,4 @@ export const VideoGames = (props) => {
   );
 };
 
-export default VideoGames;
+export default TradingCardGames;
