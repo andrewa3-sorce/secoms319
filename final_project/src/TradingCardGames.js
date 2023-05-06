@@ -2,10 +2,11 @@ import ReactDOM from "react-dom/client";
 import React, { useState, useEffect } from "react";
 import Home from "./Home";
 import VideoGames from "./VideoGames";
+import Checkout from "./Checkout.js";
+import Admin from "./Admin.js";
 import "./Games.css";
-let displayedData = false;
 
-export const TradingCardGames = (props) => {
+function TradingCardGames(props) {
   console.log("Step 1: After reading file :");
   let cartState = [];
   if (props.cart != null) {
@@ -14,8 +15,9 @@ export const TradingCardGames = (props) => {
     }
   }
 
-  let Products = fetch("http://localhost:4001/")
-  const [ProductsCategory, setProductsCategory] = useState(Products);
+  const [ProductsCategory, setProductsCategory] = useState(
+    props.products.filter((cat) => cat.category === "Trading Card Game")
+  );
   const [query, setQuery] = useState("");
 
   const [cart, setCart] = useState(cartState);
@@ -37,7 +39,7 @@ export const TradingCardGames = (props) => {
     const root = ReactDOM.createRoot(document.getElementById("root"));
     root.render(
       <React.StrictMode>
-        <TradingCardGames cart={cart} />
+        <TradingCardGames products={props.products} cart={cart} />
       </React.StrictMode>
     );
   }
@@ -46,7 +48,7 @@ export const TradingCardGames = (props) => {
     const root = ReactDOM.createRoot(document.getElementById("root"));
     root.render(
       <React.StrictMode>
-        <VideoGames cart={cart} />
+        <VideoGames products={props.products} cart={cart} />
       </React.StrictMode>
     );
   }
@@ -55,7 +57,24 @@ export const TradingCardGames = (props) => {
     const root = ReactDOM.createRoot(document.getElementById("root"));
     root.render(
       <React.StrictMode>
-        <Home cart={cart} />
+        <Home products={props.products} cart={cart} />
+      </React.StrictMode>
+    );
+  }
+
+  function goToCheckout() {
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(
+      <React.StrictMode>
+        <Checkout products={props.products} cart={cart} />
+      </React.StrictMode>
+    );
+  }
+  function goToAdmin() {
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(
+      <React.StrictMode>
+        <Admin products={props.products} cart={cart} />
       </React.StrictMode>
     );
   }
@@ -65,38 +84,63 @@ export const TradingCardGames = (props) => {
     return hmot.length;
   }
 
-  // var ProductsCategory = Products;
   const render_products = () => {
-    for(let i=0; i<9; ++i){
-
-    }
     return (
-          <div class="col-md-4">
-            <div class="card mb-4 box-shadow">
+      <div class="row">
+        {ProductsCategory.map((product, index) => (
+          <div key={index} class="col-md-4 mt-2">
+            <div class="card">
               <div class="card-body">
-                <p class="card-text">
-                  Description here
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      View
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      Edit
-                    </button>
-                  </div>
-                  <small class="text-muted">9 mins</small>
+                <div class="card-image-actions">
+                  <img
+                    style={{ maxWidth: "100%" }}
+                    src={product.image}
+                    class="center"
+                  ></img>
                 </div>
               </div>
+              <div class="card-body bg-light text-center">
+                <div class="card" style={{ background: "#333" }}>
+                  <div class="mb-2">
+                    <h3 class="font-weight-semibold mb-0">{product.title}</h3>
+                  </div>
+                  <h5 class="font-weight-semibold mb-2">${product.price}</h5>
+                </div>
+                <h7>{product.description}</h7>
+              </div>
+              <div class="btn-group">
+                <button
+                  type="button"
+                  class="btn btn-sm btn-outline"
+                  style={{
+                    background: "#bd3026",
+                    color: "white",
+                    fontWeight: "bold",
+                  }}
+                  onClick={() => removeFromCart(product)}
+                >
+                  -
+                </button>{" "}
+                <button
+                  type="button"
+                  class="btn btn-sm btn-outline"
+                  style={{
+                    background: "#17802c",
+                    color: "white",
+                    fontWeight: "bold",
+                  }}
+                  onClick={() => addToCart(product)}
+                >
+                  +
+                </button>
+              </div>
+              <p style={{ textAlign: "center" }}>
+                Quantity: {howManyofThis(product.id)}
+              </p>
             </div>
           </div>
+        ))}
+      </div>
     );
   };
 
@@ -107,6 +151,9 @@ export const TradingCardGames = (props) => {
   const removeFromCart = (el) => {
     let hardCopy = [...cart];
     hardCopy = hardCopy.filter((cartItem) => cartItem.id !== el.id);
+    for (let i = 0; i < howManyofThis(el.id) - 1; ++i) {
+      hardCopy.push(el);
+    }
     setCart(hardCopy);
   };
 
@@ -117,13 +164,6 @@ export const TradingCardGames = (props) => {
     </div>
   ));
 
-  function handleClick(tag) {
-    console.log("Step 4 : in handleClick", tag);
-    let filtered = Products.filter((cat) => cat.category === tag);
-    setProductsCategory(filtered);
-    ProductsCategory = filtered;
-    console.log("Step 5 : ", Products.length, ProductsCategory.length);
-  }
   const handleChange = (e) => {
     setQuery(e.target.value);
     console.log(
@@ -141,110 +181,64 @@ export const TradingCardGames = (props) => {
     setProductsCategory(results);
   };
 
-  function executeDisplay(){
-    if (!displayedData){
-      getAllMethod();
-      console.log("executed");
-      displayedData = true;
-    }
-  }
-
-  function getAllMethod() {
-    fetch("http://localhost:4001/")
-      .then((response) => response.json())
-      .then((data) => {
-        let mainContainer = document.getElementById("productList");
-        console.log(data);
-          for (let i in data) {
-            if(data[i].category == "Trading Card Game"){
-              let div1 = document.createElement("div");
-            div1.classList.add("col-md-4", "mt-2");
-
-            let div2 = document.createElement("div");
-            div2.classList.add("card"); 
-
-            let div3 = document.createElement("div");
-            div3.classList.add("card-body"); 
-
-            let div4 = document.createElement("div");
-            div4.classList.add("card-image-actions");
-            div4.innerHTML = "Image";
-
-            let div5 = document.createElement("div");
-            div5.classList.add("card-body", "bg-light", "text-center"); 
-
-            let div6 = document.createElement("div");
-            div6.classList.add("mb-2"); 
-
-            let h6 = document.createElement("h6");
-            h6.classList.add("font-weight-semibold", "mb-2"); 
-
-            let title = document.createElement("a");
-            title.href = "#";
-            title.classList.add("text-default", "mb-2");
-            title.innerHTML = `${data[i].title}`;
-
-            let category = document.createElement("a");
-            category.href = "#";
-            category.classList.add("text-muted");
-            category.innerHTML = `${data[i].category}`;
-
-            let h3 = document.createElement("h3");
-            h3.classList.add("font-weight-semibold", "mb-0"); 
-            h3.innerHTML = `$${data[i].price}`;
-
-            let h7 = document.createElement("h7");
-            h7.innerHTML = `${data[i].description}`;
-
-            h6.appendChild(title);
-            div6.appendChild(h6);
-            div6.appendChild(category);
-            div5.appendChild(div6);
-            div5.appendChild(h3);
-            div5.appendChild(h7);
-            div3.appendChild(div4);
-            div2.appendChild(div3);
-            div2.appendChild(div5);
-            div1.appendChild(div2);
-            mainContainer.appendChild(div1);
-            }
-          } // end of for
-      });
-  }
-
-  executeDisplay();
-
   return (
     <div>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+      />
       <header class="masthead mb-auto">
-          <div class="inner">
-            <h3 class="masthead-brand">Gaming Store</h3>
-            <nav class="nav nav-masthead justify-content-center">
-              <a class="nav-link" onClick={()=>goToHome()}>
-                Home
-              </a>
-              <a
-                class="nav-link"
-                onClick={() => goToVideoGames()}
+        <div class="inner">
+          <h2 style={{ fontSize: "48px" }} class="masthead-brand">
+            Gaming Store
+          </h2>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link" onClick={() => goToHome()}>
+              Home
+            </a>
+            <a class="nav-link" onClick={() => goToVideoGames()}>
+              Video Games
+            </a>
+            <a class="nav-link" onClick={() => goToTradingCardGames()}>
+              Trading Card Games
+            </a>
+            <a class="nav-link" onClick={() => goToCheckout()}>
+              <i class="bi-cart"></i>
+            </a>
+            <a class="nav-link" onClick={() => goToAdmin()}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-person-fill-lock"
+                viewBox="0 0 16 16"
               >
-                Video Games
-              </a>
-              <a class="nav-link"
-                onClick={() => goToTradingCardGames()}>
-                Trading Card Games
-              </a>
-            </nav>
-          </div>
-        </header>
-      <div>
-        <h1>Trading Card Games</h1>
-        <div class="container d-flex justify-content-center mt-50 mb-50">
-          <div id="productList" class="row">
-          </div>
+                <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-9 8c0 1 1 1 1 1h5v-1a1.9 1.9 0 0 1 .01-.2 4.49 4.49 0 0 1 1.534-3.693C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Zm7 0a1 1 0 0 1 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-2Zm3-3a1 1 0 0 0-1 1v1h2v-1a1 1 0 0 0-1-1Z" />
+              </svg>
+            </a>
+          </nav>
+        </div>
+      </header>
+      <div class="container d-flex justify-content-center mt-50 mb-50">
+        <div id="productList" class="row">
+          <h2
+            style={{ paddingTop: "10px", textAlign: "center" }}
+            className="text-3xl font-extrabold tracking-tight text-gray-600 category-title"
+          >
+            Trading Card Games (
+            {
+              props.products.filter(
+                (cat) => cat.category === "Trading Card Game"
+              ).length
+            }
+            )
+          </h2>
+          {render_products(ProductsCategory)}
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default TradingCardGames;

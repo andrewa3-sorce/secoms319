@@ -4,9 +4,22 @@ import './index.css';
 import Home from './Home';
 import 'bootstrap/dist/css/bootstrap.css';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <Home />
-  </React.StrictMode>
-);
+let Products = [];
+async function init() {
+  await fetch("http://localhost:4001/")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Got data");
+      for (let i in data) {
+        Products.push(data[i]);
+      }
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(
+        <React.StrictMode>
+          <Home products={Products} />
+        </React.StrictMode>
+      );
+    });
+}
+
+init();
