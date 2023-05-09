@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
-import States from "./States.js";
+import States from "../Consts/States.js";
 import Home from "./Home.js";
 import Confirmation from "./Confirmation.js";
 import VideoGames from "./VideoGames.js";
 import TradingCardGames from "./TradingCardGames";
 import Admin from "./Admin.js";
-import "./Games.css";
-import "./Home.css";
+import "../styles.css";
 const Checkout = (props) => {
   let uniqueCartItems = [...new Set(props.cart)];
 

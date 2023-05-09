@@ -1,11 +1,10 @@
-import "./Home.css";
 import Home from "./Home";
 import Read from "./Read";
 import Update from "./Update";
 import Create from "./Create";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+import "../styles.css";
 
 function Delete(props) {
   function goToHome() {

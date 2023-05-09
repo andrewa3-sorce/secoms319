@@ -5,8 +5,8 @@ import VideoGames from "./VideoGames.js";
 import TradingCardGames from "./TradingCardGames.js";
 import Checkout from "./Checkout.js";
 import Admin from "./Admin.js";
+import "../styles.css";
 
-//fix
 const Confirmation = (props) => {
   const [cart, setCart] = useState(props.cart);
   const [cartTotal, setCartTotal] = useState(0);

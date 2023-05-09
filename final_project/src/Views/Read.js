@@ -1,11 +1,10 @@
-import "./Home.css";
 import Home from "./Home";
 import Create from "./Create";
 import Update from "./Update";
 import Delete from "./Delete";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+import "../styles.css";
 let displayedData = false;
 
 function Read(props) {

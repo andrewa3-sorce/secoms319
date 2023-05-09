@@ -1,11 +1,10 @@
-import "./Home.css";
 import Home from "./Home";
 import Read from "./Read";
 import Update from "./Update";
 import Delete from "./Delete";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+import "../styles.css";
 
 function Create(props) {
     let largest;

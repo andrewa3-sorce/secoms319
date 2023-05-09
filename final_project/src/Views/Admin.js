@@ -6,10 +6,10 @@ import Create from "./Create.js";
 import Read from "./Read.js";
 import Update from "./Update.js";
 import Delete from "./Delete.js";
-import {Password} from "./AdminPassword.js";
+import {Password} from "../Consts/AdminPassword.js";
 import ReactDOM from "react-dom/client";
 import React, { useState, useEffect } from "react";
-import "./Home.css";
+import "../styles.css";
 
 function Admin(props) {
   let cartState = [];

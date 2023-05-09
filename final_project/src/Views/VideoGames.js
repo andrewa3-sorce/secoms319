@@ -1,12 +1,12 @@
 import ReactDOM from "react-dom/client";
 import React, { useState, useEffect } from "react";
 import Home from "./Home";
-import VideoGames from "./VideoGames";
+import TradingCardGames from "./TradingCardGames";
 import Checkout from "./Checkout.js";
 import Admin from "./Admin.js";
-import "./Games.css";
+import "../styles.css";
 
-function TradingCardGames(props) {
+function VideoGames(props) {
   console.log("Step 1: After reading file :");
   let cartState = [];
   if (props.cart != null) {
@@ -16,7 +16,7 @@ function TradingCardGames(props) {
   }
 
   const [ProductsCategory, setProductsCategory] = useState(
-    props.products.filter((cat) => cat.category === "Trading Card Game")
+    props.products.filter((cat) => cat.category === "Nintendo Game")
   );
   const [query, setQuery] = useState("");
 
@@ -226,11 +226,10 @@ function TradingCardGames(props) {
             style={{ paddingTop: "10px", textAlign: "center" }}
             className="text-3xl font-extrabold tracking-tight text-gray-600 category-title"
           >
-            Trading Card Games (
+            Video Games (
             {
-              props.products.filter(
-                (cat) => cat.category === "Trading Card Game"
-              ).length
+              props.products.filter((cat) => cat.category === "Nintendo Game")
+                .length
             }
             )
           </h2>
@@ -241,4 +240,4 @@ function TradingCardGames(props) {
   );
 }
 
-export default TradingCardGames;
+export default VideoGames;

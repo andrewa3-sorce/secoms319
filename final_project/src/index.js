@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import Home from './Home';
+import './styles.css';
+import Home from './Views/Home';
 import 'bootstrap/dist/css/bootstrap.css';
 
 let Products = [];

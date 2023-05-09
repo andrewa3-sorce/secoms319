@@ -4,7 +4,7 @@ import Admin from "./Admin.js";
 import Checkout from "./Checkout.js";
 import ReactDOM from "react-dom/client";
 import React, { useState, useEffect } from "react";
-import './Home.css';
+import '../styles.css';
 
 function Home(props) {
   let cartState = [];
